@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KingAdi - Jasa Ketik & Website Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300  ;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  " rel="stylesheet">
+    <style>
+        :root {
+            --primary-900: #0a0a0a;
+            --primary-800: #1a1a2e;
+            --accent-neon: #00ff88;
+            --accent-cyan: #00d4ff;
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8b8;
+            --gradient-primary: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            --gradient-secondary: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+            --font-primary: 'Inter', sans-serif;
+            --font-display: 'Space Grotesk', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-primary);
+            background: var(--primary-900);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            33% { transform: rotate(120deg) scale(1.1); }
+            66% { transform: rotate(240deg) scale(0.9); }
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-neon);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--primary-900);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-neon);
+            color: var(--accent-neon);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-neon);
+            color: var(--primary-900);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Sections */
+        .section { padding: 5rem 0; }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-neon);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-neon);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.3);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Portfolio */
+        .portfolio-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+        }
+
+        .portfolio-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-secondary);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-title {
+            font-size: 1.25rem;
+        }
+
+        .portfolio-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--accent-neon);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            padding: 1rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-neon);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-800);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Floating WhatsApp */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .fab:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 255, 136, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-animate.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Typing Effect */
+        .typing-container {
+            display: inline-block;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: var(--accent-neon);
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">KingAdi</a>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">Tentang</a></li>
+                <li><a href="#services" class="nav-link">Layanan</a></li>
+                <li><a href="#portfolio" class="nav-link">Portofolio</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimoni</a></li>
+                <li><a href="#contact" class="nav-link">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="hero-title">
+                <span class="typing-container">
+                    <span id="typingText"></span>
+                    <span class="typing-cursor"></span>
+                </span>
+            </h1>
+            <p class="hero-subtitle">
+                Digital Creator & Web Developer Profesional | Melayani Jasa Pengetikan Tugas & Pembuatan Website Modern
+            </p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary">Lihat Layanan</a>
+                <a href="#contact" class="btn btn-outline">Konsultasi Gratis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">Tentang KingAdi</h2>
+            <div class="about-content scroll-animate">
+                <div class="about-text">
+                    <p>
+                        Halo! Saya KingAdi, seorang Digital Creator dan Web Developer yang bersemangat dalam membantu menyelesaikan tugas-tugas sekolah dan membuat website profesional.
+                    </p>
+                    <p>
+                        Dengan pengalaman dalam coding, desain, dan problem solving, saya berkomitmen memberikan hasil terbaik yang kreatif, tepat waktu, dan sesuai kebutuhan Anda.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Proyek Selesai</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Klien Puas</div>
+                    </div>
+                </div>
+                       
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Kualitas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">Layanan Profesional</h2>
+            <div class="services-grid">
+                <div class="service-card scroll-animate">
+                    <div class="service-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h3 class="service-title">Jasa Ketik Tugas</h3>
+                    <p class="service-description">
+                        Tugas sekolah diketik dengan rapi, format sesuai ketentuan, dan pengiriman tepat waktu.
+                    </p>
+                    <div class="service-price">Rp 3.000</div>
+                    <a href="https://wa.me/6283873742015  " class="btn btn-primary">Pesan Sekarang</a>
+                </div>
+
+                <div class="service-card scroll-animate">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="service-title">Cover Tugas</h3>
+                    <p class="service-description">
+                        Desain cover tugas yang menarik dan profesional sesuai tema dan kebutuhan Anda.
+                    </p>
+                    <div class="service-price">Rp 4.000</div>
+                    <a href="https://wa.me/6283873742015  " class="btn btn-primary">Pesan Sekarang</a>
+                </div>
+
+                <div class="service-card scroll-animate">
+                    <div class="service-icon">
+                        <i class="fas fa-presentation"></i>
+                    </div>
+                    <h3 class="service-title">Paket Presentasi</h3>
+                    <p class="service-description">
+                        Paket lengkap presentasi (PPT + Word) dengan desain yang eye-catching dan konten berkualitas.
+                    </p>
+                    <div class="service-price">Rp 8.000</div>
+                    <a href="https://wa.me/6283873742015  " class="btn btn-primary">Pesan Sekarang</a>
+                </div>
+
+                <div class="service-card scroll-animate">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="service-title">Website Basic</h3>
+                    <p class="service-description">
+                        Website sederhana 1 halaman, responsive, dan desain modern untuk kebutuhan basic Anda.
+                    </p>
+                    <div class="service-price">Rp 20.000</div>
+                    <a href="https://wa.me/6283873742015  " class="btn btn-secondary">Pesan Sekarang</a>
+                </div>
+
+                <div class="service-card scroll-animate">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="service-title">Website Standard</h3>
+                    <p class="service-description">
+                        Website 3-5 halaman, responsive, desain modern dengan fitur yang lebih lengkap.
+                    </p>
+                    <div class="service-price">Rp 75.000</div>
+                    <a href="https://wa.me/6283873742015  " class="btn btn-secondary">Pesan Sekarang</a>
+                </div>
+
+                <div class="service-card scroll-animate">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="service-title">Website Premium</h3>
+                    <p class="service-description">
+                        Website lengkap 5+ halaman, custom desain, fitur profesional, dan support penuh.
+                    </p>
+                    <div class="service-price">Rp 150.000</div>
+                    <a href="https://wa.me/6283873742015  " class="btn btn-secondary">Pesan Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="section" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portofolio</h2>
+            <div class="portfolio-showcase">
+                <div class="portfolio-item scroll-animate">
+                    <div class="portfolio-header">
+                        <div class="portfolio-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <div>
+                            <h3 class="portfolio-title">Landing Page Company Profile</h3>
+                            <p class="portfolio-description">
+                                Website company profile dengan desain futuristik, animasi smooth, dan performa optimal. 
+                                Dilengkapi dengan section hero interaktif dan contact form modern.
+                            </p>
+                            <div class="portfolio-tags">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Responsive</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item scroll-animate">
+                    <div class="portfolio-header">
+                        <div class="portfolio-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div>
+                            <h3 class="portfolio-title">Presentasi PowerPoint Interaktif</h3>
+                            <p class="portfolio-description">
+                                Presentasi sekolah dengan animasi menarik, transisi smooth, dan desain yang eye-catching. 
+                                Tema: Perubahan Iklim dan Dampaknya bagi Masa Depan.
+                            </p>
+                            <div class="portfolio-tags">
+                                <span class="tag">PowerPoint</span>
+                                <span class="tag">Animation</span>
+                                <span class="tag">Professional</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item scroll-animate">
+                    <div class="portfolio-header">
+                        <div class="portfolio-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div>
+                            <h3 class="portfolio-title">Cover Tugas Lingkungan</h3>
+                            <p class="portfolio-description">
+                                Desain cover dengan tema lingkungan, ilustrasi custom, dan layout yang 
+                                eye-catching untuk tugas kelompok mata pelajaran Biologi.
+                            </p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Design</span>
+                                <span class="tag">Illustration</span>
+                                <span class="tag">Layout</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item scroll-animate">
+                    <div class="portfolio-header">
+                        <div class="portfolio-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <h3 class="portfolio-title">Portfolio Pribadi</h3>
+                            <p class="portfolio-description">
+                                Personal website dengan animasi smooth, dark theme modern, dan 
+                                showcase project yang profesional untuk branding diri yang kuat.
+                            </p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Portfolio</span>
+                                <span class="tag">Animation</span>
+                                <span class="tag">Modern</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item scroll-animate">
+                    <div class="portfolio-header">
+                        <div class="portfolio-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="portfolio-title">Dokumen Tugas Kelompok</h3>
+                            <p class="portfolio-description">
+                                Dokumen tugas dengan format profesional, daftar isi otomatis, 
+                                referensi terstruktur, dan tampilan yang rapi sesuai standar akademik.
+                            </p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Formatting</span>
+                                <span class="tag">Academic</span>
+                                <span class="tag">Professional</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item scroll-animate">
+                    <div class="portfolio-header">
+                        <div class="portfolio-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div>
+                            <h3 class="portfolio-title">Website Sekolah Dasar</h3>
+                            <p class="portfolio-description">
+                                Website sekolah dengan fitur lengkap: profil, galeri, berita, 
+                                dan kontak. Desain ramah anak namun tetap profesional dan informatif.
+                            </p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Education</span>
+                                <span class="tag">Full-Stack</span>
+                                <span class="tag">CMS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Apa Kata Mereka</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card scroll-animate">
+                    <p class="testimonial-text">
+                        
+                    </p><p class="testimonial-text">
+                        <h4>Debrian RajaDinata</h4>
+                        "KingAdi sangat profesional dalam mengerjakan tugas saya. Hasilnya rapi, cepat, dan sesuai dengan instruksi. Sangat direkomendasikan untuk teman-teman yang butuh bantuan tugas!"
+                         <div class="author-avatar">D</div>
+                        <div class="testimonial-author">
+                        <div class="author-info">
+                           
+                        </d
+                        iv>
+                    </div>
+                </div>
+
+                <div class="testimonial-card scroll-animate">
+                    <p class="testimonial-text">
+                        "Website yang dibuat KingAdi melebihi ekspektasi saya. Desainnya modern, loading cepat, dan navigasi sangat user-friendly. Harga sangat worth it dengan kualitas yang diberikan."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <h4>Rico Maresca</h4>
+                    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card scroll-animate">
+                    <p class="testimonial-text">
+                        "Saya sudah beberapa kali memesan jasa ketik tugas dan selalu puas dengan hasilnya. KingAdi sangat teliti dalam memeriksa ejaan dan format. Response sangat cepat dan komunikatif."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">W</div>
+                        <div class="author-info">
+                            <h4>Widan Nugraha</h4>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Mulai Kolaborasi</h2>
+            <div class="contact-container">
+                <div class="contact-info scroll-animate">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>+62 838-7374-2015</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>kingadi@email.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Jam Kerja</h4>
+                            <p>Senin - Sabtu, 08:00 - 20:00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form scroll-animate" id="contactForm">
+                    <input type="text" class="form-input" placeholder="Nama Lengkap" required>
+                    <input type="email" class="form-input" placeholder="Email" required>
+                    <select class="form-input" required>
+                        <option value="">Pilih Layanan</option>
+                        <option value="ketik-tugas">Jasa Ketik Tugas</option>
+                        <option value="cover-tugas">Cover Tugas</option>
+                        <option value="presentasi">Paket Presentasi</option>
+                        <option value="website">Website</option>
+                    </select>
+                    <textarea class="form-textarea" placeholder="Deskripsikan kebutuhan Anda" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">KingAdi</div>
+                <div class="social-links">
+                    <a href="https://wa.me/6283873742015  " class="social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <p>&copy; 2025 KingAdi. All rights reserved. | Digital Creator & Web Developer</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/6283873742015  " class="fab">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Typing Effect
+        const texts = [
+            'Digital Creator & Web Developer',
+            'Jasa Ketik Tugas Profesional',
+            'Website Modern & Kreatif',
+            'Solusi Tugas & Project Anda'
+        ];
+
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeText() {
+            const typingElement = document.getElementById('typingText');
+            const currentText = texts[textIndex];
+
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+
+            setTimeout(typeText, isDeleting ? 50 : 100);
+        }
+
+        // Start typing effect
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(typeText, 1000);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.querySelector('.contact-form input[type="text"]').value;
+            const email = document.querySelector('.contact-form input[type="email"]').value;
+            const service = document.querySelector('.contact-form select').value;
+            const message = document.querySelector('.contact-form textarea').value;
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Halo KingAdi! Saya ${name} ingin memesan layanan ${service}. Email: ${email}. Pesan: ${message}`;
+            const whatsappUrl = `https://wa.me/6283873742015?text=  ${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            e.target.reset();
+            
+            // Show success message
+            alert('Pesan Anda telah dikirim! Saya akan segera merespons. Terima kasih!');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+                navbar.style.borderBottom = '1px solid rgba(0, 255, 136, 0.3)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.9)';
+                navbar.style.borderBottom = '1px solid rgba(0, 255, 136, 0.2)';
+            }
+        });
+    </script>
+</body>
+</html>
